@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>T2</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <section class="c_app" id="app">
+                <div class="c_header">
+                    <span>Текстовые блоки</span>
+                </div>    
+                <div class="c_body">
+                    <ul class="c_list">
+                            <li v-for="lbl in LB.list" class="c_list_i"  v-on:click="select_b=lbl" v-on:dblclick="ondbClick_blok(lbl)">
+                                <div class="view"  v-bind:class="{ select_blok: select_b == lbl, blok_green : (lbl.Blok_type == 2 && lbl.db), blok_red : (lbl.Blok_type == 2 && lbl.db ==false)}"> 
+                                    <label>{{lbl.txt}}</label> 
+                                    <button class="destroy" v-on:click="onClick_destroy(lbl)"></button>
+                                </div> 
+                            </li>    
+                    </ul>
+                </div>    
+                <div class="c_footer">
+                    <span class="app_count">
+                        <strong>B1={{LB.count_b1}}</strong>
+                        <strong>B2={{LB.count_b2}}</strong>
+                        <strong>Итого={{LB.list.length}}</strong>
+                    </span>
+                    <ul class="filters">
+                            <li v-on:click="add_b1()"><a href="#/add1">Добавить B1</a></li>
+                            <li v-on:click="add_b2()"><a href="#/add2">Добавить B2</a></li>
+                    </ul>
+                </div>    
+            </section>
+            
+        <script src="js/utils/vue.js"></script>
+        <script src="js/blok.js"></script>
+        <script src="js/txt_blokls.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
